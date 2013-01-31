@@ -1,0 +1,5 @@
+#!/bin/bash
+adduser --system --group --disabled-login --no-create-home solr
+cp solr.txt /etc/init.d/solr
+chmod u+x /etc/init.d/solr
+
