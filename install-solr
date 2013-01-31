@@ -1,5 +1,42 @@
 #!/bin/bash
+
+# Make sure only root can run our script
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
+# update all installed packeages
+apt-get update
+apt-get -y upgrade
+
+# install OpenJDK 
+apt-get install openjdk-6-jdk
+
+# do it in a sub-dir, we want to get rid of most downloaded crap
+mkdir temp
+cd temp/
+../create_solr
+
+# let it run in /var/solr
+mv solr /var/solr
+
+# remove the crap
+cd ..
+rm -r temp
+
+# let solr run under limited user
 adduser --system --group --disabled-login --no-create-home solr
+
+# this user needs write access to this directory
+chown solr -R /var/solr/*
+
+# install startup script
 cp solr.txt /etc/init.d/solr
 chmod u+x /etc/init.d/solr
+# make sure solr starts after a reboot
+update-rc.d solr defaults
+
+# we are there, start the server
+/etc/init.d/solr start
 
