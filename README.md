@@ -40,8 +40,8 @@ The file create_solr starts with the lines:
     apache_solr_version="3.6.2"
     search_api_solr_version="7.x-1.0-rc3"
 
-You can add/change core names now: (tst acc prd)
-3.6.2 is the current apache-solr version (3.x version)
+You can add/change core names here: (tst acc prd)  
+3.6.2 is the current apache-solr version (3.x version)  
 Change search_api_solr_version when there is a new verion on [drupal.org](http://drupal.org/project/search_api_solr)
 
 License
@@ -49,6 +49,6 @@ License
 
 Copyright (C) 2011 [Frans Kuipers](http://franskuipers.nl/)  
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of the GNU General Public License, version 2, as published
+This program is free software; you can redistribute it and/or modify it  
+under the terms of the GNU General Public License, version 2, as published  
 by the [Free Software Foundation](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
